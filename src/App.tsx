@@ -59,7 +59,7 @@ const App: FC = () => {
         ]);
         setRevealedCardsIndex([]);
       }, 1000);
-    } else {
+    } else if (revealedCardsIndex.length === 2) {
       notMatchedTimeout.current = setTimeout(() => {
         setRevealedCardsIndex([]);
       }, 500);
