@@ -36,12 +36,12 @@ const App: FC = () => {
   const matchedTimeout = useRef<number | null>(null);
   const notMatchedTimeout = useRef<number | null>(null);
 
-  const isCardMatched =
+  const isCardsMatched =
     revealedCardsIndex.length === 2 &&
     emojis[revealedCardsIndex[0]] === emojis[revealedCardsIndex[1]];
 
   const onFlipCard = (index: number) => {
-    if (isCardMatched) return;
+    if (isCardsMatched) return;
     setRevealedCardsIndex((revealedCardsIndex) => {
       if (revealedCardsIndex.length === 0) return [index];
       if (revealedCardsIndex.length === 1)
@@ -51,7 +51,7 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    if (isCardMatched) {
+    if (isCardsMatched) {
       matchedTimeout.current = setTimeout(() => {
         setMatchedCards((matchedCards) => [
           ...matchedCards,
@@ -73,7 +73,7 @@ const App: FC = () => {
         clearTimeout(notMatchedTimeout.current);
       }
     };
-  }, [revealedCardsIndex, isCardMatched]);
+  }, [revealedCardsIndex, isCardsMatched]);
 
   const onClickPlayAgain: MouseEventHandler = () => {
     setRevealedCardsIndex([]);
